@@ -304,5 +304,14 @@ client.on('message', message => {
 	}
 });
 
+var fs = require("fs"),
+	path = require("path"),
+	util = require("util");
 
-client.login(token);
+fs.readFile(path.join(__dirname, "token_5E_Combat_Streamliner.cfg"), 'utf8', function (err, data) {
+	if (err)
+		process.exit(1);
+	token = util.format(data);
+
+	client.login(token);
+});
