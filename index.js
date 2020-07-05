@@ -108,4 +108,16 @@ client.on('message', message => {
 	}
 });
 
-client.login(token);
+
+var fs = require("fs"),
+	path = require("path"),
+	util = require("util");
+
+fs.readFile(path.join(__dirname, "token_Battle_Roller.cfg"), 'utf8', function (err, data) {
+	if (err)
+		process.exit(1);
+	token = util.format(data);
+
+	client.login(token);
+});
+
